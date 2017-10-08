@@ -11,17 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :customer_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :customer_code %>
-    <%= form.text_field :customer_code, id: :customer_customer_code %>
-  </div>
-
+<form class="form-horizontal">
+  <fieldset>
+    <div class="form-group">
+      <label for="inputName" class="col-lg-2 control-label">Customer Name</label>
+      <div class="col-lg-10">
+          <%= form.text_field :name, id: :customer_name %>
+      </div>
+    </div>
+      <div class="form-group">
+      <label for="inputName" class="col-lg-2 control-label">Customer Code</label>
+      <div class="col-lg-10">
+        <%= form.text_field :customer_code, id: :customer_customer_code %>
+      </div>
+    </div>
+  </fieldset>
   <div class="actions">
     <%= form.submit %>
   </div>
+</form>
+
 <% end %>
