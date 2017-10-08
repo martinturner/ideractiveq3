@@ -1,0 +1,45 @@
+<%= form_with(model: order, local: true) do |form| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <form class="form-horizontal">
+    <fieldset>
+      <div class="form-group">
+        <label for="inputName" class="col-lg-2 control-label">Order Code</label>
+        <div class="col-lg-10">
+            <%= form.text_field :order_code, id: :order_order_code %>
+        </div>
+      </div>
+        <div class="form-group">
+        <label for="inputName" class="col-lg-2 control-label">Order Date</label>
+        <div class="col-lg-10">
+           <%= form.date_field :order_date, id: :order_order_date %>
+        </div>
+      </div>
+        <div class="form-group">
+        <label for="inputName" class="col-lg-2 control-label">Quantity</label>
+        <div class="col-lg-10">
+            <%= form.number_field :quantity, id: :order_quantity %>
+        </div>
+      </div>
+      <div class="form-group">
+      <label for="select" class="col-lg-2 control-label">Select Customer</label>
+      <div class="col-lg-10">
+        <select class="form-control" id="select" <%= form.select :customer_id, options_for_select(@customers.map{|c| [c.customer_name,c.id]}) %>
+  </div>
+    </fieldset>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  </form>
+
+<% end %>
